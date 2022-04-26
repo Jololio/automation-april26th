@@ -11,17 +11,15 @@ afterAll(async () => {
     await driver.quit()
 })
 
-//-----DELETE TEST IS INCOMPLETE-----//
+test('Delete a movie', async () => {
+    await driver.findElement(By.xpath('//input')).sendKeys('Hush\n')
 
-// test('Delete a movie', async () => {
-//     await driver.findElement(By.xpath('//input')).sendKeys('Hush\n')
+    await driver.findElement(By.xpath('(//button)[2]')).click()
 
-//     await driver.findElement(By.xpath('(//button)[2]')).click()
+    const ul = await driver.findElement(By.xpath('//ul'))
 
-//     const ul = await driver.findElement(By.xpath('//ul'))
-
-//     expect(ul).to.have.lengthOf(0)
-// })
+    expect(ul.hasChildren).toBeFalsy()
+})
 
 test('Cross off a movie', async () => {
     await driver.findElement(By.xpath('//input')).sendKeys('Hush 2\n')
